@@ -1,0 +1,38 @@
+GET http://localhost:8080/contacts
+
+###
+
+GET http://localhost:8080/contacts/665d246d14e214965256601e
+
+###
+
+# create
+POST http://localhost:8080/contacts
+content-type: application/json
+
+{
+  "firstName": "test3",
+  "lastName": "test3",
+  "email": "test3",
+  "favoriteColor": "test3",
+  "birthday": "test3"
+}
+
+###
+
+#update
+PUT http://localhost:8080/contacts/665f9a8a5e513dad32596492
+content-type: application/json
+
+{
+  "firstName": "test4",
+  "lastName": "test4",
+  "email": "test4",
+  "favoriteColor": "test4",
+  "birthday": "test4"
+}
+
+###
+
+#delete
+DELETE http://localhost:8080/contacts/665f9a8a5e513dad32596492

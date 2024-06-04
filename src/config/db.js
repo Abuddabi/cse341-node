@@ -27,7 +27,17 @@ const getDb = () => {
   return _client;
 };
 
+const getCollection = async (collectionName) => {
+  try {
+    const dbClient = getDb();
+    return await dbClient.db().collection(collectionName);
+  } catch (error) {
+    throw error;
+  }
+}
+
 module.exports = {
   initDb,
-  getDb
+  getDb,
+  getCollection
 };
