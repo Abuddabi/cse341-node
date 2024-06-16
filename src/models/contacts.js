@@ -1,30 +1,30 @@
-const mongodb = require('../config/db');
-const ObjectId = require('mongodb').ObjectId;
-const collectionName = 'contacts';
+const mongodb = require("../config/db");
+const ObjectId = require("mongodb").ObjectId;
+const collectionName = "contacts";
 
 const model = {};
 
 const getCollection = async () => {
-  return await await mongodb.getCollection(collectionName);
-}
+  return await mongodb.getCollection(collectionName);
+};
 
 const getObjectId = (id) => {
   return new ObjectId(id);
-}
+};
 
 const idOrLastId = async (id, contacts = null) => {
-  if (id === 'undefined') {
+  if (id === "undefined") {
     const lastRecord = await getLastRecord(contacts);
     id = lastRecord._id;
   }
 
   return getObjectId(id);
-}
+};
 
 const getLastRecord = async (contacts = null) => {
   if (!contacts) contacts = await getCollection();
   const response = contacts.find({}).sort({ _id: -1 }).limit(1);
-  const lastRecord = await response.toArray()
+  const lastRecord = await response.toArray();
 
   return lastRecord[0];
 };
@@ -38,7 +38,7 @@ model.getAll = async () => {
   } catch (error) {
     throw new Error(error.message);
   }
-}
+};
 
 model.getOne = async (id) => {
   try {
@@ -50,7 +50,7 @@ model.getOne = async (id) => {
   } catch (error) {
     throw new Error(error.message);
   }
-}
+};
 
 model.create = async (newContact) => {
   try {
@@ -66,7 +66,7 @@ model.create = async (newContact) => {
   } catch (error) {
     throw new Error(error.message);
   }
-}
+};
 
 model.update = async (id, contact) => {
   try {
@@ -83,7 +83,7 @@ model.update = async (id, contact) => {
   } catch (error) {
     throw new Error(error.message);
   }
-}
+};
 
 model.delete = async (id) => {
   try {
@@ -99,6 +99,6 @@ model.delete = async (id) => {
   } catch (error) {
     throw new Error(error.message);
   }
-}
+};
 
 module.exports = model;
