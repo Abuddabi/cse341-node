@@ -5,18 +5,25 @@
     "description": "Description",
     "version": "1.0.0"
   },
-  "host": "localhost:3000",
+  "host": "cse341-node-h1vo.onrender.com",
   "basePath": "/",
-  "schemes": [
-    "http"
-  ],
+  "schemes": ["https"],
   "paths": {
-    "/contacts/": {
+    "/api-docs/": {
       "get": {
         "description": "",
-        "produces": [
-          "application/json"
-        ],
+        "responses": {
+          "default": {
+            "description": ""
+          }
+        }
+      }
+    },
+    "/contacts/": {
+      "get": {
+        "summary": "GET all",
+        "description": "",
+        "produces": ["application/json"],
         "responses": {
           "200": {
             "description": "OK"
@@ -66,10 +73,9 @@
     },
     "/contacts/{id}": {
       "get": {
+        "summary": "GET by id",
         "description": "",
-        "produces": [
-          "application/json"
-        ],
+        "produces": ["application/json"],
         "parameters": [
           {
             "name": "id",

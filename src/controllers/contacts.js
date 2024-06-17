@@ -2,6 +2,7 @@ const contactsModel = require("../models/contacts");
 const ctrl = {};
 
 ctrl.getAll = async (req, res) => {
+  // #swagger.summary = "GET all"
   try {
     const contacts = await contactsModel.getAll();
 
@@ -13,6 +14,7 @@ ctrl.getAll = async (req, res) => {
 };
 
 ctrl.getSingle = async (req, res) => {
+  // #swagger.summary = "GET by id"
   try {
     const contact = await contactsModel.getOne(req.params.id);
 
