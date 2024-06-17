@@ -1,8 +1,9 @@
 require("dotenv").config();
 const swaggerAutogen = require("swagger-autogen")();
 
-const { PORT, DEV, RENDER_URL } = process.env;
-const host = DEV ? `localhost:${PORT}` : RENDER_URL;
+const { ENV, RENDER_URL } = process.env;
+const isProd = ENV === "production";
+const host = isProd ? RENDER_URL : `localhost:${process.env.PORT || 8080}`;
 
 const doc = {
   info: {
@@ -10,7 +11,7 @@ const doc = {
     description: "Description"
   },
   host: host,
-  schemes: DEV ? ["http"] : ["https"]
+  schemes: isProd ? ["https"] : ["http"]
 };
 
 const outputFile = "./output.json";
