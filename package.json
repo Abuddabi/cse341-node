@@ -5,13 +5,13 @@
   "main": "server.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "dev": "npm run swagger-dev & nodemon server.js",
-    "build": "npm run swagger-prod & npm run format",
+    "dev": "npm run swagger & nodemon server.js",
+    "build": "npm run swagger:prod & npm run format",
     "lint": "eslint .",
     "lint:fix": "eslint --fix",
     "format": "prettier --write './**/*.{js,jsx,ts,tsx,css,md,json}' --config ./.prettierrc",
-    "swagger-dev": "node ./src/config/swagger/generator.js",
-    "swagger-prod": "ENV=production node ./src/config/swagger/generator.js"
+    "swagger": "node ./src/config/swagger/generator.js",
+    "swagger:prod": "ENV=production npm run swagger"
   },
   "author": "Egor Sotnikov",
   "license": "ISC",

@@ -3,6 +3,7 @@ const ctrl = {};
 
 ctrl.getAll = async (req, res) => {
   // #swagger.summary = "GET all"
+  // #swagger.tags = ["Contacts"]
   try {
     const contacts = await contactsModel.getAll();
 
@@ -15,6 +16,7 @@ ctrl.getAll = async (req, res) => {
 
 ctrl.getSingle = async (req, res) => {
   // #swagger.summary = "GET by id"
+  // #swagger.tags = ["Contacts"]
   try {
     const contact = await contactsModel.getOne(req.params.id);
 
@@ -26,6 +28,7 @@ ctrl.getSingle = async (req, res) => {
 };
 
 ctrl.createContact = async (req, res) => {
+  // #swagger.tags = ["Contacts"]
   try {
     const newContact = {
       firstName: req.body.firstName,
@@ -47,6 +50,7 @@ ctrl.createContact = async (req, res) => {
 };
 
 ctrl.updateContact = async (req, res) => {
+  // #swagger.tags = ["Contacts"]
   try {
     const contact = {
       firstName: req.body.firstName,
@@ -68,6 +72,7 @@ ctrl.updateContact = async (req, res) => {
 };
 
 ctrl.deleteContact = async (req, res) => {
+  // #swagger.tags = ["Contacts"]
   try {
     const deleteId = req.params.id;
     const result = await contactsModel.delete(deleteId);
