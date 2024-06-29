@@ -1,6 +1,6 @@
 const mongodb = require("../config/db");
 const ObjectId = require("mongodb").ObjectId;
-const collectionName = "contacts";
+const collectionName = "food";
 
 const model = {};
 
@@ -13,18 +13,18 @@ const getObjectId = (id) => {
   return new ObjectId(id);
 };
 
-const idOrLastId = async (id, contacts = null) => {
+const idOrLastId = async (id, collection = null) => {
   if (id === "undefined") {
-    const lastRecord = await getLastRecord(contacts);
+    const lastRecord = await getLastRecord(collection);
     id = lastRecord._id;
   }
 
   return getObjectId(id);
 };
 
-const getLastRecord = async (contacts = null) => {
-  if (!contacts) contacts = await getCollection();
-  const response = contacts.find({}).sort({ _id: -1 }).limit(1);
+const getLastRecord = async (collection = null) => {
+  if (!collection) collection = await getCollection();
+  const response = collection.find({}).sort({ _id: -1 }).limit(1);
   const lastRecord = await response.toArray();
 
   return lastRecord[0];
@@ -32,8 +32,8 @@ const getLastRecord = async (contacts = null) => {
 
 model.getAll = async () => {
   try {
-    const contacts = await getCollection();
-    const result = await contacts.find().toArray();
+    const collection = await getCollection();
+    const result = await collection.find().toArray();
 
     return result;
   } catch (error) {
@@ -43,9 +43,9 @@ model.getAll = async () => {
 
 model.getOne = async (id) => {
   try {
-    const contacts = await getCollection();
-    const userId = getObjectId(id);
-    const result = await contacts.find({ _id: userId }).toArray();
+    const collection = await getCollection();
+    const foodId = getObjectId(id);
+    const result = await collection.find({ _id: foodId }).toArray();
 
     return result[0];
   } catch (error) {
@@ -53,10 +53,10 @@ model.getOne = async (id) => {
   }
 };
 
-model.create = async (newContact) => {
+model.create = async (newFood) => {
   try {
-    const contacts = await getCollection();
-    const response = await contacts.insertOne(newContact);
+    const collection = await getCollection();
+    const response = await collection.insertOne(newFood);
 
     return {
       success: response.acknowledged,
@@ -68,12 +68,12 @@ model.create = async (newContact) => {
   }
 };
 
-model.update = async (id, contact) => {
+model.update = async (id, food) => {
   try {
-    const contacts = await getCollection();
-    const userId = await idOrLastId(id, contacts);
+    const collection = await getCollection();
+    const foodId = await idOrLastId(id, collection);
     // be aware of updateOne if you only want to update specific fields
-    const response = await contacts.replaceOne({ _id: userId }, contact);
+    const response = await collection.replaceOne({ _id: foodId }, food);
 
     return {
       success: response.modifiedCount > 0,
@@ -87,9 +87,9 @@ model.update = async (id, contact) => {
 
 model.delete = async (id) => {
   try {
-    const contacts = await getCollection();
-    const userId = await idOrLastId(id, contacts);
-    const response = await contacts.deleteOne({ _id: userId });
+    const collection = await getCollection();
+    const foodId = await idOrLastId(id, collection);
+    const response = await collection.deleteOne({ _id: foodId });
 
     return {
       success: response.deletedCount > 0,

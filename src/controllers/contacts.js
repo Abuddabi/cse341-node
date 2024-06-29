@@ -59,7 +59,8 @@ ctrl.updateContact = async (req, res) => {
       favoriteColor: req.body.favoriteColor,
       birthday: req.body.birthday
     };
-    const result = await contactsModel.update(req.params.id, contact);
+    const updateId = req.params.id;
+    const result = await contactsModel.update(updateId, contact);
 
     if (result.success) {
       res.status(204).send();
@@ -86,5 +87,15 @@ ctrl.deleteContact = async (req, res) => {
     res.status(500).json({ message: err.message });
   }
 };
+
+// const getContactFromRequest = (req) => {
+//   return {
+//     firstName: req.body.firstName,
+//     lastName: req.body.lastName,
+//     email: req.body.email,
+//     favoriteColor: req.body.favoriteColor,
+//     birthday: req.body.birthday
+//   };
+// }
 
 module.exports = ctrl;
