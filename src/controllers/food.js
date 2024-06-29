@@ -12,7 +12,7 @@ ctrl.getAll = async (req, res) => {
   } catch (err) {
     res.status(500).json({ message: err.message });
   }
-}
+};
 
 ctrl.getSingle = async (req, res) => {
   // #swagger.summary = "GET by id"
@@ -25,7 +25,7 @@ ctrl.getSingle = async (req, res) => {
   } catch (err) {
     res.status(500).json({ message: err.message });
   }
-}
+};
 
 ctrl.createFood = async (req, res) => {
   // #swagger.tags = ["Food"]
@@ -47,7 +47,7 @@ ctrl.createFood = async (req, res) => {
   } catch (err) {
     res.status(500).json({ message: err.message });
   }
-}
+};
 
 ctrl.updateFood = async (req, res) => {
   // #swagger.tags = ["Food"]
@@ -70,7 +70,7 @@ ctrl.updateFood = async (req, res) => {
   } catch (err) {
     res.status(500).json({ message: err.message });
   }
-}
+};
 
 ctrl.deleteFood = async (req, res) => {
   // #swagger.tags = ["Food"]
@@ -86,7 +86,7 @@ ctrl.deleteFood = async (req, res) => {
   } catch (err) {
     res.status(500).json({ message: err.message });
   }
-}
+};
 
 // const getFoodFromRequest = (req) => {
 //   return {
