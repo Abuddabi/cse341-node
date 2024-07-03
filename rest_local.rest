@@ -36,3 +36,16 @@ content-type: application/json
 
 #delete
 DELETE http://localhost:8080/contacts/665f9a8a5e513dad32596492
+
+###
+
+POST http://localhost:8080/food
+content-type: application/json
+
+{
+  "name": 111,
+  "price": 555,
+  "quantity": 444,
+  "weight": 444,
+  "manager": 333
+}

@@ -36,3 +36,16 @@ content-type: application/json
 
 #delete
 DELETE https://cse341-node-h1vo.onrender.com/contacts/665f9a8a5e513dad32596492
+
+###
+
+POST https://cse341-node-h1vo.onrender.com/food
+content-type: application/json
+
+{
+  "name": 111,
+  "price": "any",
+  "quantity": "any",
+  "weight": "any",
+  "manager": "any"
+}
