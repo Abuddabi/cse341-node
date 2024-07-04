@@ -1,8 +1,8 @@
 const router = require("express").Router();
 const foodController = require("../controllers/food");
 const { isAuthenticated } = require("../utils/auth");
-const { foodValidation } = require("../utils/validation");
-const { rules: validationRules, validate } = foodValidation;
+const { commonValidation } = require("../utils/validation");
+const { rules: validationRules, validate } = commonValidation;
 
 router.get("/", foodController.getAll);
 

@@ -1,6 +1,6 @@
 const { check, validationResult } = require("express-validator");
 
-const commonValidation = (req, res, next) => {
+const commonMiddleware = (req, res, next) => {
   const errors = validationResult(req);
   if (errors.isEmpty()) {
     return next();
@@ -31,10 +31,10 @@ exports.contactValidation = {
     requiredStringRule("favoriteColor"),
     requiredStringRule("birthday")
   ],
-  validate: commonValidation
+  validate: commonMiddleware
 };
 
-exports.foodValidation = {
+exports.commonValidation = {
   rules: () => [
     requiredStringRule("name"),
     requiredStringRule("price"),
@@ -42,5 +42,5 @@ exports.foodValidation = {
     requiredStringRule("weight"),
     requiredStringRule("manager")
   ],
-  validate: commonValidation
+  validate: commonMiddleware
 };
