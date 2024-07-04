@@ -13,29 +13,34 @@ const commonValidation = (req, res, next) => {
 };
 
 const requiredStringRule = (fieldName, errorMessage) => {
-  return check(fieldName, errorMessage).trim().notEmpty().isString();
+  return check(fieldName, errorMessage)
+    .trim()
+    .notEmpty()
+    .withMessage(`${fieldName} is required.`)
+    .isString()
+    .not()
+    .isNumeric()
+    .withMessage(`${fieldName} should be a string`);
 };
-
-const requiredStrTxt = "is required and should be a string";
 
 exports.contactValidation = {
   rules: () => [
-    requiredStringRule("firstName", `firstName ${requiredStrTxt}.`),
-    requiredStringRule("lastName", `lastName ${requiredStrTxt}.`),
+    requiredStringRule("firstName"),
+    requiredStringRule("lastName"),
     check("email", "Please include a valid email").trim().isEmail().normalizeEmail(),
-    requiredStringRule("favoriteColor", `favoriteColor ${requiredStrTxt}.`),
-    requiredStringRule("birthday", `birthday ${requiredStrTxt}.`)
+    requiredStringRule("favoriteColor"),
+    requiredStringRule("birthday")
   ],
   validate: commonValidation
 };
 
 exports.foodValidation = {
   rules: () => [
-    requiredStringRule("name", `name ${requiredStrTxt}.`),
-    requiredStringRule("price", `price ${requiredStrTxt}.`),
-    requiredStringRule("quantity", `quantity ${requiredStrTxt}.`),
-    requiredStringRule("weight", `weight ${requiredStrTxt}.`),
-    requiredStringRule("manager", `manager ${requiredStrTxt}.`)
+    requiredStringRule("name"),
+    requiredStringRule("price"),
+    requiredStringRule("quantity"),
+    requiredStringRule("weight"),
+    requiredStringRule("manager")
   ],
   validate: commonValidation
 };
