@@ -5,7 +5,7 @@ const apiDocsUrl = "/api-docs";
 const googleCallbackUrl = "/google/callback";
 const googleAuthenticate = passport.authenticate("google", {
   failureRedirect: apiDocsUrl,
-  session: false,
+  session: false
 });
 
 const googleCallback = (req, res) => {
@@ -18,7 +18,7 @@ router.get("/logout", (req, res, next) => {
   req.logout((err) => {
     if (err) return next(err);
     res.redirect(apiDocsUrl);
-  })
+  });
 });
 
 module.exports = { router, googleCallbackUrl, googleAuthenticate, googleCallback };

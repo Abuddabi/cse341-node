@@ -14,7 +14,7 @@ const htmlInDescription = `
 const doc = {
   info: {
     title: "My API",
-    description: htmlInDescription,
+    description: htmlInDescription
   },
   host: host,
   schemes: isProd ? ["https"] : ["http"]

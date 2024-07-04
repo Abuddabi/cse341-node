@@ -5,10 +5,10 @@
     "description": "\n  <p>Authentication links: </p>\n  <a href='/auth'>Login</a><br />\n  <a href='/auth/logout'>Logout</a>\n",
     "version": "1.0.0"
   },
-  "host": "localhost:8080",
+  "host": "cse341-node-h1vo.onrender.com",
   "basePath": "/",
   "schemes": [
-    "http"
+    "https"
   ],
   "paths": {
     "/api-docs/": {

@@ -36,6 +36,6 @@ const isAuthenticated = (req, res, next) => {
     return res.status(401).json("You don't have access. Please visit '/auth' page.");
   }
   next();
-}
+};
 
 module.exports = { initialize, isAuthenticated, passport };
