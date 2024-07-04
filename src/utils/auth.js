@@ -4,7 +4,7 @@ const { googleCallbackUrl } = require("../routes/auth");
 
 const initialize = () => {
   const { ENV, PORT, RENDER_URL, GOOGLE_CLIENT_ID, GOOGLE_CLIENT_SECRET } = process.env;
-  const host = ENV === "production" ? `http://localhost:${PORT || 8080}` : `https://${RENDER_URL}`;
+  const host = ENV === "production" ? `https://${RENDER_URL}` : `http://localhost:${PORT || 8080}`;
 
   passport.use(
     new GoogleStrategy(
