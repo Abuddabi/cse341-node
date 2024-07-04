@@ -227,19 +227,32 @@
             "schema": {
               "type": "object",
               "properties": {
+                "displayName": {
+                  "type": "string",
+                  "example": "any"
+                },
                 "firstName": {
+                  "type": "string",
                   "example": "any"
                 },
                 "lastName": {
+                  "type": "string",
+                  "example": "any"
+                },
+                "nickname": {
+                  "type": "string",
                   "example": "any"
                 },
                 "email": {
-                  "example": "any"
+                  "type": "string",
+                  "example": "any@any.com"
                 },
                 "favoriteColor": {
+                  "type": "string",
                   "example": "any"
                 },
                 "birthday": {
+                  "type": "string",
                   "example": "any"
                 }
               }
@@ -304,19 +317,32 @@
             "schema": {
               "type": "object",
               "properties": {
+                "displayName": {
+                  "type": "string",
+                  "example": "any"
+                },
                 "firstName": {
+                  "type": "string",
                   "example": "any"
                 },
                 "lastName": {
+                  "type": "string",
+                  "example": "any"
+                },
+                "nickname": {
+                  "type": "string",
                   "example": "any"
                 },
                 "email": {
-                  "example": "any"
+                  "type": "string",
+                  "example": "any@any.com"
                 },
                 "favoriteColor": {
+                  "type": "string",
                   "example": "any"
                 },
                 "birthday": {
+                  "type": "string",
                   "example": "any"
                 }
               }

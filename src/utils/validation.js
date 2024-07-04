@@ -25,8 +25,10 @@ const requiredStringRule = (fieldName, errorMessage) => {
 
 exports.contactValidation = {
   rules: () => [
+    requiredStringRule("displayName"),
     requiredStringRule("firstName"),
     requiredStringRule("lastName"),
+    requiredStringRule("nickname"),
     check("email", "Please include a valid email").trim().isEmail().normalizeEmail(),
     requiredStringRule("favoriteColor"),
     requiredStringRule("birthday")

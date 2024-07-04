@@ -1,6 +1,18 @@
 const contactsModel = require("../models/contacts");
 const ctrl = {};
 
+const getContactFromRequest = (req) => {
+  return {
+    displayName: req.body.displayName,
+    firstName: req.body.firstName,
+    lastName: req.body.lastName,
+    nickname: req.body.nickname,
+    email: req.body.email,
+    favoriteColor: req.body.favoriteColor,
+    birthday: req.body.birthday
+  };
+};
+
 ctrl.getAll = async (req, res) => {
   // #swagger.summary = "GET all"
   // #swagger.tags = ["Contacts"]
@@ -30,14 +42,20 @@ ctrl.getSingle = async (req, res) => {
 ctrl.createContact = async (req, res) => {
   // #swagger.tags = ["Contacts"]
   // #swagger.description = "This endpoint requires authentication. For logging in visit '/auth' page."
+  /*  #swagger.parameters['body'] = {
+        in: 'body',
+        schema: {                
+          displayName: "any",
+          firstName: "any",
+          lastName: "any",
+          nickname: "any",
+          email: 'any@any.com',
+          favoriteColor: "any",
+          birthday: "any"
+        }
+    } */
   try {
-    const newContact = {
-      firstName: req.body.firstName,
-      lastName: req.body.lastName,
-      email: req.body.email,
-      favoriteColor: req.body.favoriteColor,
-      birthday: req.body.birthday
-    };
+    const newContact = getContactFromRequest(req);
     const result = await contactsModel.create(newContact);
 
     if (result.success) {
@@ -53,14 +71,21 @@ ctrl.createContact = async (req, res) => {
 ctrl.updateContact = async (req, res) => {
   // #swagger.tags = ["Contacts"]
   // #swagger.description = "This endpoint requires authentication. For logging in visit '/auth' page."
+  /*  #swagger.parameters['body'] = {
+        in: 'body',
+        schema: {                
+          displayName: "any",
+          firstName: "any",
+          lastName: "any",
+          nickname: "any",
+          email: 'any@any.com',
+          favoriteColor: "any",
+          birthday: "any"
+        }
+    } */
+
   try {
-    const contact = {
-      firstName: req.body.firstName,
-      lastName: req.body.lastName,
-      email: req.body.email,
-      favoriteColor: req.body.favoriteColor,
-      birthday: req.body.birthday
-    };
+    const contact = getContactFromRequest(req);
     const updateId = req.params.id;
     const result = await contactsModel.update(updateId, contact);
 
@@ -90,15 +115,5 @@ ctrl.deleteContact = async (req, res) => {
     res.status(500).json({ message: err.message });
   }
 };
-
-// const getContactFromRequest = (req) => {
-//   return {
-//     firstName: req.body.firstName,
-//     lastName: req.body.lastName,
-//     email: req.body.email,
-//     favoriteColor: req.body.favoriteColor,
-//     birthday: req.body.birthday
-//   };
-// }
 
 module.exports = ctrl;
