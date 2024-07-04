@@ -29,6 +29,8 @@ ctrl.getSingle = async (req, res) => {
 
 ctrl.createFood = async (req, res) => {
   // #swagger.tags = ["Food"]
+  // #swagger.description = "This endpoint requires authentication. For logging in visit '/auth' page."
+
   try {
     const newFood = {
       name: req.body.name,
@@ -51,6 +53,7 @@ ctrl.createFood = async (req, res) => {
 
 ctrl.updateFood = async (req, res) => {
   // #swagger.tags = ["Food"]
+  // #swagger.description = "This endpoint requires authentication. For logging in visit '/auth' page."
   try {
     const food = {
       name: req.body.name,
@@ -74,6 +77,7 @@ ctrl.updateFood = async (req, res) => {
 
 ctrl.deleteFood = async (req, res) => {
   // #swagger.tags = ["Food"]
+  // #swagger.description = "This endpoint requires authentication. For logging in visit '/auth' page."
   try {
     const deleteId = req.params.id;
     const result = await foodModel.delete(deleteId);

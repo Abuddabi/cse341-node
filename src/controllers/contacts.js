@@ -29,6 +29,7 @@ ctrl.getSingle = async (req, res) => {
 
 ctrl.createContact = async (req, res) => {
   // #swagger.tags = ["Contacts"]
+  // #swagger.description = "This endpoint requires authentication. For logging in visit '/auth' page."
   try {
     const newContact = {
       firstName: req.body.firstName,
@@ -51,6 +52,7 @@ ctrl.createContact = async (req, res) => {
 
 ctrl.updateContact = async (req, res) => {
   // #swagger.tags = ["Contacts"]
+  // #swagger.description = "This endpoint requires authentication. For logging in visit '/auth' page."
   try {
     const contact = {
       firstName: req.body.firstName,
@@ -74,6 +76,7 @@ ctrl.updateContact = async (req, res) => {
 
 ctrl.deleteContact = async (req, res) => {
   // #swagger.tags = ["Contacts"]
+  // #swagger.description = "This endpoint requires authentication. For logging in visit '/auth' page."
   try {
     const deleteId = req.params.id;
     const result = await contactsModel.delete(deleteId);

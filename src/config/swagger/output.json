@@ -2,13 +2,13 @@
   "swagger": "2.0",
   "info": {
     "title": "My API",
-    "description": "Description",
+    "description": "\n  <p>Authentication links: </p>\n  <a href='/auth'>Login</a><br />\n  <a href='/auth/logout'>Logout</a>\n",
     "version": "1.0.0"
   },
-  "host": "cse341-node-h1vo.onrender.com",
+  "host": "localhost:8080",
   "basePath": "/",
   "schemes": [
-    "https"
+    "http"
   ],
   "paths": {
     "/api-docs/": {
@@ -44,7 +44,7 @@
         "tags": [
           "Food"
         ],
-        "description": "",
+        "description": "This endpoint requires authentication. For logging in visit '/auth' page.",
         "parameters": [
           {
             "name": "body",
@@ -74,6 +74,9 @@
         "responses": {
           "201": {
             "description": "Created"
+          },
+          "401": {
+            "description": "Unauthorized"
           },
           "500": {
             "description": "Internal Server Error"
@@ -112,7 +115,7 @@
         "tags": [
           "Food"
         ],
-        "description": "",
+        "description": "This endpoint requires authentication. For logging in visit '/auth' page.",
         "parameters": [
           {
             "name": "id",
@@ -149,6 +152,9 @@
           "204": {
             "description": "No Content"
           },
+          "401": {
+            "description": "Unauthorized"
+          },
           "500": {
             "description": "Internal Server Error"
           }
@@ -158,7 +164,7 @@
         "tags": [
           "Food"
         ],
-        "description": "",
+        "description": "This endpoint requires authentication. For logging in visit '/auth' page.",
         "parameters": [
           {
             "name": "id",
@@ -170,6 +176,9 @@
         "responses": {
           "204": {
             "description": "No Content"
+          },
+          "401": {
+            "description": "Unauthorized"
           },
           "500": {
             "description": "Internal Server Error"
@@ -200,7 +209,7 @@
         "tags": [
           "Contacts"
         ],
-        "description": "",
+        "description": "This endpoint requires authentication. For logging in visit '/auth' page.",
         "parameters": [
           {
             "name": "body",
@@ -230,6 +239,9 @@
         "responses": {
           "201": {
             "description": "Created"
+          },
+          "401": {
+            "description": "Unauthorized"
           },
           "500": {
             "description": "Internal Server Error"
@@ -268,7 +280,7 @@
         "tags": [
           "Contacts"
         ],
-        "description": "",
+        "description": "This endpoint requires authentication. For logging in visit '/auth' page.",
         "parameters": [
           {
             "name": "id",
@@ -305,6 +317,9 @@
           "204": {
             "description": "No Content"
           },
+          "401": {
+            "description": "Unauthorized"
+          },
           "500": {
             "description": "Internal Server Error"
           }
@@ -314,7 +329,7 @@
         "tags": [
           "Contacts"
         ],
-        "description": "",
+        "description": "This endpoint requires authentication. For logging in visit '/auth' page.",
         "parameters": [
           {
             "name": "id",
@@ -326,6 +341,9 @@
         "responses": {
           "204": {
             "description": "No Content"
+          },
+          "401": {
+            "description": "Unauthorized"
           },
           "500": {
             "description": "Internal Server Error"
